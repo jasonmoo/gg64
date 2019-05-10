@@ -10,7 +10,7 @@ import (
 	"math"
 	"strings"
 
-	"github.com/golang/freetype/raster"
+	"github.com/jasonmoo/freetype64/raster"
 	"golang.org/x/image/draw"
 	"golang.org/x/image/font"
 	"golang.org/x/image/font/basicfont"

@@ -1,8 +1,6 @@
 package main
 
-import (
-	"github.com/fogleman/gg"
-)
+import gg "github.com/jasonmoo/gg64"
 
 func main() {
 	const W = 1000
