@@ -16,6 +16,7 @@ import (
 	"golang.org/x/image/font"
 	"golang.org/x/image/font/basicfont"
 	"golang.org/x/image/math/f64"
+	"golang.org/x/image/math/fixed"
 )
 
 type LineCap int
@@ -712,7 +713,7 @@ func (dc *Context) drawString(im *image.RGBA, s string, x, y float64) {
 		Dst:  im,
 		Src:  image.NewUniform(dc.color),
 		Face: dc.fontFace,
-		Dot:  fixp(x, y),
+		Dot:  fixed.P(int(x), int(y)),
 	}
 	// based on Drawer.DrawString() in golang.org/x/image/font/font.go
 	prevC := rune(-1)

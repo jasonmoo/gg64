@@ -4,7 +4,6 @@ import (
 	"math"
 
 	"github.com/jasonmoo/freetype64/raster"
-	"golang.org/x/image/math/fixed"
 )
 
 func flattenPath(p raster.Path) [][]Point {
@@ -132,32 +131,22 @@ func dashPath(paths [][]Point, dashes []float64, offset float64) [][]Point {
 func rasterPath(paths [][]Point) raster.Path {
 	var result raster.Path
 	for _, path := range paths {
-		var previous fixed.Point26_6
+		var previous Point
 		for i, point := range path {
-			f := point.Fixed()
 			if i == 0 {
-				result.Start(f)
+				result.Start(point.Fixed())
 			} else {
-				dx := f.X - previous.X
-				dy := f.Y - previous.Y
-				if dx < 0 {
-					dx = -dx
-				}
-				if dy < 0 {
-					dy = -dy
-				}
-				if dx+dy > 8 {
-					// TODO: this is a hack for cases where two points are
-					// too close - causes rendering issues with joins / caps
-					result.Add1(f)
+				// TODO: this is a hack for cases where two points are
+				// too close - causes rendering issues with joins / caps
+				if point.Distance(previous) > .05 {
+					result.Add1(point.Fixed())
 				}
 			}
-			previous = f
+			previous = point
 		}
 	}
 	return result
 }
-
 func dashed(path raster.Path, dashes []float64, offset float64) raster.Path {
 	return rasterPath(dashPath(flattenPath(path), dashes, offset))
 }
