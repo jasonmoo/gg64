@@ -10,7 +10,7 @@ type Point struct {
 	X, Y float64
 }
 
-func (a Point) Fixed() fixed.Point26_6 {
+func (a Point) Fixed() fixed.Point52_12 {
 	return fixp(a.X, a.Y)
 }
 
