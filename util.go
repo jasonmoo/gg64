@@ -5,15 +5,13 @@ import (
 	"image"
 	"image/draw"
 	"image/jpeg"
-	_ "image/jpeg"
 	"image/png"
 	"io/ioutil"
 	"math"
 	"os"
 	"strings"
 
-	"github.com/golang/freetype/truetype"
-
+	"github.com/jasonmoo/freetype64/truetype"
 	"golang.org/x/image/font"
 	"golang.org/x/image/math/fixed"
 )

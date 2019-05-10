@@ -1,21 +1,19 @@
 # Go Graphics
 
+-- This is a fork of the awesome gg library by @fogleman for the purpose of implementing 64 bit precision.  Very WIP --
+
 `gg` is a library for rendering 2D graphics in pure Go.
 
 ![Stars](http://i.imgur.com/CylQIJt.png)
 
 ## Installation
 
-    go get -u github.com/fogleman/gg
-
-Alternatively, you may use gopkg.in to grab a specific major-version:
-
-    go get -u gopkg.in/fogleman/gg.v1
+    go get -u github.com/jasonmoo/gg64
 
 ## Documentation
 
-- godoc: https://godoc.org/github.com/fogleman/gg
-- pkg.go.dev: https://pkg.go.dev/github.com/fogleman/gg?tab=doc
+- godoc: https://godoc.org/github.com/jasonmoo/gg64
+- pkg.go.dev: https://pkg.go.dev/github.com/jasonmoo/gg64?tab=doc
 
 ## Hello, Circle!
 
@@ -24,7 +22,7 @@ Look how easy!
 ```go
 package main
 
-import "github.com/fogleman/gg"
+import gg "github.com/jasonmoo/gg64"
 
 func main() {
     dc := gg.NewContext(1000, 1000)
@@ -37,7 +35,7 @@ func main() {
 
 ## Examples
 
-There are [lots of examples](https://github.com/fogleman/gg/tree/master/examples) included. They're mostly for testing the code, but they're good for learning, too.
+There are [lots of examples](https://github.com/jasonmoo/gg64/tree/master/examples) included. They're mostly for testing the code, but they're good for learning, too.
 
 ![Examples](http://i.imgur.com/tMFoyzu.png)
 
@@ -202,7 +200,7 @@ See the output of this example below.
 ```go
 package main
 
-import "github.com/fogleman/gg"
+import "github.com/jasonmoo/gg64"
 
 func main() {
 	const S = 1024
