@@ -24,6 +24,7 @@ func checkHash(t *testing.T, dc *Context, expected string) {
 	actual := hash(dc)
 	if actual != expected {
 		t.Fatalf("expected hash: %s != actual hash: %s", expected, actual)
+		// fmt.Printf("%s: %s\n", expected[:3], actual)
 	}
 }
 
@@ -71,7 +72,7 @@ func TestLines(t *testing.T) {
 		dc.Stroke()
 	}
 	saveImage(dc, "TestLines")
-	checkHash(t, dc, "036bd220e2529955cc48425dd72bb686")
+	checkHash(t, dc, "c18d78790358e576af65c9a03584c182")
 }
 
 func TestCircles(t *testing.T) {
@@ -91,7 +92,7 @@ func TestCircles(t *testing.T) {
 		dc.Stroke()
 	}
 	saveImage(dc, "TestCircles")
-	checkHash(t, dc, "c52698000df96fabafe7863701afe922")
+	checkHash(t, dc, "251f9975e899afeff79ea007141345b9")
 }
 
 func TestQuadratic(t *testing.T) {
@@ -113,7 +114,7 @@ func TestQuadratic(t *testing.T) {
 		dc.Stroke()
 	}
 	saveImage(dc, "TestQuadratic")
-	checkHash(t, dc, "56b842d814aee94b52495addae764a77")
+	checkHash(t, dc, "44751b7c9fade74e3cd993eca61625fc")
 }
 
 func TestCubic(t *testing.T) {
@@ -137,7 +138,7 @@ func TestCubic(t *testing.T) {
 		dc.Stroke()
 	}
 	saveImage(dc, "TestCubic")
-	checkHash(t, dc, "4a7960fc4eaaa33ce74131c5ce0afca8")
+	checkHash(t, dc, "547e16ff1c385e239e264998a7941999")
 }
 
 func TestFill(t *testing.T) {
@@ -157,7 +158,7 @@ func TestFill(t *testing.T) {
 		dc.Fill()
 	}
 	saveImage(dc, "TestFill")
-	checkHash(t, dc, "7ccb3a2443906a825e57ab94db785467")
+	checkHash(t, dc, "1abd7b7340d2f90c032d338de998486e")
 }
 
 func TestClip(t *testing.T) {
@@ -176,7 +177,7 @@ func TestClip(t *testing.T) {
 		dc.Fill()
 	}
 	saveImage(dc, "TestClip")
-	checkHash(t, dc, "762c32374d529fd45ffa038b05be7865")
+	checkHash(t, dc, "d11b4747414f4c8bf2496bf2f72189c3")
 }
 
 func TestPushPop(t *testing.T) {
@@ -191,7 +192,7 @@ func TestPushPop(t *testing.T) {
 		dc.Pop()
 	}
 	saveImage(dc, "TestPushPop")
-	checkHash(t, dc, "31e908ee1c2ea180da98fd5681a89d05")
+	checkHash(t, dc, "aee579aeede3a53df2b33486ef3c8e46")
 }
 
 func TestDrawStringWrapped(t *testing.T) {
@@ -201,7 +202,7 @@ func TestDrawStringWrapped(t *testing.T) {
 	dc.SetRGB(0, 0, 0)
 	dc.DrawStringWrapped("Hello, world! How are you?", 50, 50, 0.5, 0.5, 90, 1.5, AlignCenter)
 	saveImage(dc, "TestDrawStringWrapped")
-	checkHash(t, dc, "8d92f6aae9e8b38563f171abd00893f8")
+	checkHash(t, dc, "acc55576124a82dc673389cc3938922a")
 }
 
 func TestDrawImage(t *testing.T) {
@@ -255,7 +256,7 @@ func TestDrawPoint(t *testing.T) {
 		}
 	}
 	saveImage(dc, "TestDrawPoint")
-	checkHash(t, dc, "55af8874531947ea6eeb62222fb33e0e")
+	checkHash(t, dc, "4e9437136157d7067ed99aac8e4726bd")
 }
 
 func TestLinearGradient(t *testing.T) {
@@ -301,7 +302,7 @@ func TestDashes(t *testing.T) {
 		dc.Stroke()
 	}
 	saveImage(dc, "TestDashes")
-	checkHash(t, dc, "d188069c69dcc3970edfac80f552b53c")
+	checkHash(t, dc, "db13546b82dfadb87b7dfb3c55c94b8f")
 }
 
 func BenchmarkCircles(b *testing.B) {
