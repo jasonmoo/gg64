@@ -89,7 +89,6 @@ func (r *patternPainter) Paint(ss []raster.Span, done bool) {
 		if s.X0 >= s.X1 {
 			continue
 		}
-		const m = 1<<16 - 1
 		y := s.Y - r.im.Rect.Min.Y
 		x0 := s.X0 - r.im.Rect.Min.X
 		// RGBAPainter.Paint() in $GOPATH/src/github.com/jasonmoo/freetype64/raster/paint.go
@@ -109,6 +108,7 @@ func (r *patternPainter) Paint(ss []raster.Span, done bool) {
 			dg := uint32(r.im.Pix[i+1])
 			db := uint32(r.im.Pix[i+2])
 			da := uint32(r.im.Pix[i+3])
+			const m = 1<<16 - 1
 			a := (m - (ca * ma / m)) * 0x101
 			r.im.Pix[i+0] = uint8((dr*a + cr*ma) / m >> 8)
 			r.im.Pix[i+1] = uint8((dg*a + cg*ma) / m >> 8)
