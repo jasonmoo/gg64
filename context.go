@@ -407,7 +407,7 @@ func (dc *Context) joiner() raster.Joiner {
 	return nil
 }
 
-func (dc *Context) stroke(painter raster.Painter) {
+func (dc *Context) StrokePainter(painter raster.Painter) {
 	path := dc.strokePath
 	if len(dc.dashes) > 0 {
 		path = dashed(path, dc.dashes, dc.dashOffset)
@@ -423,7 +423,7 @@ func (dc *Context) stroke(painter raster.Painter) {
 	r.Rasterize(painter)
 }
 
-func (dc *Context) fill(painter raster.Painter) {
+func (dc *Context) FillPainter(painter raster.Painter) {
 	path := dc.fillPath
 	if dc.hasCurrent {
 		path = make(raster.Path, len(dc.fillPath))
@@ -454,7 +454,7 @@ func (dc *Context) StrokePreserve() {
 	if painter == nil {
 		painter = newPatternPainter(dc.im, dc.mask, dc.strokePattern)
 	}
-	dc.stroke(painter)
+	dc.StrokePainter(painter)
 }
 
 // Stroke strokes the current path with the current color, line width,
@@ -481,7 +481,7 @@ func (dc *Context) FillPreserve() {
 	if painter == nil {
 		painter = newPatternPainter(dc.im, dc.mask, dc.fillPattern)
 	}
-	dc.fill(painter)
+	dc.FillPainter(painter)
 }
 
 // Fill fills the current path with the current color. Open subpaths
@@ -497,7 +497,7 @@ func (dc *Context) Fill() {
 func (dc *Context) ClipPreserve() {
 	clip := image.NewAlpha(image.Rect(0, 0, dc.width, dc.height))
 	painter := raster.NewAlphaOverPainter(clip)
-	dc.fill(painter)
+	dc.FillPainter(painter)
 	if dc.mask == nil {
 		dc.mask = clip
 	} else {
